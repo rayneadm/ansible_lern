@@ -1,0 +1,13 @@
+---
+- name: Creates directory 'WWW'
+  file:
+    path: '{{wwwdir}}'
+    state: directory  
+
+- name: Creating an empty file
+  ansible.builtin.file:    
+      path: '{{wwwdir}}/inventory.txt'
+      state: touch
+
+- name: Write Mashine inventory parameters
+  ansible.builtin.shell: uname -a >> '{{wwwdir}}/inventory.txt'

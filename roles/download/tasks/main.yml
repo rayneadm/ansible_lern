@@ -1,0 +1,5 @@
+---
+- name: Download README.rst
+  ansible.builtin.get_url:
+    url: '{{zfile}}' 
+    dest: '{{wwwdir}}/README.rst'

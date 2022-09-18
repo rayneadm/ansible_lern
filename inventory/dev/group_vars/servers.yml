@@ -1,0 +1,6 @@
+---
+usrname: "tstusr" 
+usercom: "User Test User"
+usuid: "1200"
+wwwdir: "/home/www"
+zfile: "https://raw.githubusercontent.com/ansible/ansible/devel/README.rst"

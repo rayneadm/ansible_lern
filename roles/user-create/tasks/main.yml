@@ -1,0 +1,13 @@
+---
+- name: Create group "test" 
+  ansible.builtin.group:
+    name: test 
+
+- name: Add the new user '{{usrname}}' with a specific uid '{{userid}}' and a primary group of 'test'
+  ansible.builtin.user:
+        name: "{{usrname}}"
+        comment: "{{usercom}}"
+        uid: "{{usuid}}"
+        group: test
+        shell: /usr/bin/false
+        password_lock: yes
