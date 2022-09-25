@@ -1,0 +1,18 @@
+---
+# roles/common/tasks/redhat.yml
+- name: Install vim
+  yum:
+    name: "vim"
+    state: present
+- name: Install MC
+  yum:
+    name: "mc"
+    state: present
+- name: Install tree
+  yum:
+    name: "tree"
+    state: present
+- name: install yamllint
+  yum:
+    name: "yamllint"
+    state: present

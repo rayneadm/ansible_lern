@@ -11,3 +11,7 @@
   scm: git
   version: master
   name: geerlingguy.mysql
+- src: https://github.com/geerlingguy/ansible-role-certbot.git
+  scm: git
+  version: master
+  name: geerlingguy.certbot

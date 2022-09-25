@@ -1,0 +1,22 @@
+---
+# roles/common/tasks/debian.yml
+- name: Install vim
+  apt:
+    name: "vim"
+    state: present
+- name: Install MC
+  apt:
+    name: "mc"
+    state: present
+- name: Install tree
+  apt:
+    name: "tree"
+    state: present
+- name: install yamllint
+  apt:
+    name: "yamllint"
+    state: present
+- name: install letsencrypt
+  apt:
+    name: "letsencrypt"
+    state: present
