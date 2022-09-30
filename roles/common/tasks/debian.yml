@@ -16,7 +16,3 @@
   apt:
     name: "yamllint"
     state: present
-- name: install letsencrypt
-  apt:
-    name: "letsencrypt"
-    state: present

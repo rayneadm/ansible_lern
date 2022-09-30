@@ -4,6 +4,7 @@
   - /home/rayne/ansible/roles/wordpress/vars/wordpress.yml
   roles:
   - geerlingguy.nginx
-  - geerlingguy.php
+  - geerlingguy.certbot
   - geerlingguy.mysql
+  - geerlingguy.php
   - wordpress
