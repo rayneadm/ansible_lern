@@ -1,0 +1,7 @@
+---
+- name: Remove HTTPD RHEL
+  import_tasks: redhat.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+- name: Remove Apache2 Debian
+  import_tasks: debian.yml
+  when: ansible_facts['os_family']|lower == 'debian'

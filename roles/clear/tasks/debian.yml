@@ -1,0 +1,19 @@
+---
+# roles/common/tasks/redhat.yml
+- name: "Remove Apache daemon"
+  tags: remove-apache
+  apt:
+    name:
+      - apache2-bin
+      - apache2-data
+      - apache2-utils
+      - apache2
+      - libapache2-mod-php7.4
+    autoremove: "true"
+    state: absent
+
+- name: Restart nginx daemon
+  tags: restart-nginx
+  service:
+    name: nginx
+    state: restarted

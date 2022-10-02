@@ -1,0 +1,5 @@
+---
+# vars file for common setting
+locale1: ru_RU.UTF-8
+locale2: en_US.UTF-8
+time_zone: Europe/Moscow

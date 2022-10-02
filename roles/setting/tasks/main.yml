@@ -1,0 +1,13 @@
+---
+- name: Set time zone "{{time_zone}}"
+  shell:
+    cmd: "timedatectl set-timezone {{time_zone}}"
+
+- name: Ensure a locale exists
+  community.general.locale_gen:
+    name: ru_RU.UTF-8
+    state: present
+
+- name: Set locale settings
+  shell:
+    cmd: update-locale LANG={{locale2}} LC_TIME={{locale1}}

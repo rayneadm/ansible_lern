@@ -1,0 +1,14 @@
+---
+- hosts: servers
+  vars_files:
+  - /home/rayne/ansible/roles/wordpress/vars/wordpress.yml
+  - /home/rayne/ansible/roles/wordpress/vars/wordpress_vault.yml
+  roles:
+  - { role: setting, tags: [timezone, locale]}
+  - { role: common, tags: [tools]}
+  - { role: geerlingguy.nginx, tags: [nginx]}
+  - { role: geerlingguy.certbot, tags: [certbot]}
+  - { role: geerlingguy.mysql, tags: [mysql]}
+  - { role: geerlingguy.php, tags: [php, strange-shit]}
+  - { role: wordpress, tags: [wp, wordpress, app]}
+  - { role: clear, tags: [kill-apach, clear]}

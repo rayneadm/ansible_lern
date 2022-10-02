@@ -1,0 +1,13 @@
+---
+# roles/common/tasks/redhat.yml
+- name: "Reove HTTPD/Apache daemon"
+  tags: remove-apache
+  yum:
+    name: httpd
+    autoremove: "true"
+    state: absent
+- name: Restart nginx daemon
+  tags: restart-nginx
+  service:
+    name: nginx
+    state: restarted
