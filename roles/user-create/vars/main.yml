@@ -1,0 +1,15 @@
+---
+#Vars file for leson 5
+users:
+  - login: "username1"
+    pass: "{{ somepass1 }}"
+  - login: "username2"
+    pass: "{{ somepass2 }}"
+  - login: "username3"
+    pass: "{{ somepass3 }}"
+  - login: "username4"
+    pass: "{{ somepass4 }}"
+  - login: "username5"
+    pass: "{{ somepass5 }}"
+  - login: "username6"
+    pass: "{{ somepass6 }}"

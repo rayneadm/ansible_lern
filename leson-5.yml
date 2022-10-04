@@ -1,0 +1,10 @@
+---
+### This role for leson 5
+- hosts: servers
+  vars_files:
+  - roles/make-dir/vars/main.yml
+  - roles/user-create/vars/main.yml
+  - roles/user-create/vars/vault_main.yml
+  roles:
+  - { role: make-dir, tags: [mdir]}
+  - { role: user-create, tags: [usersadd]}

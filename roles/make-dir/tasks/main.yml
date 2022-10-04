@@ -1,13 +1,25 @@
 ---
-- name: Creates directory 'WWW'
-  file:
-    path: '{{wwwdir}}'
-    state: directory  
+### This is -task- from role "Make-dir"
+- name: Create Virtual Hosts directory
+  tags: make-vhdirs
+  ansible.builtin.file:
+    path: '{{ wwwdir }}/{{ item }}'
+    state: directory
+    mode: '0755'
+    owner: www-data
+    group: www-data
+  loop:
+    - vhost-01
+    - vhost-02
+    - vhost-03
 
-- name: Creating an empty file
-  ansible.builtin.file:    
-      path: '{{wwwdir}}/inventory.txt'
-      state: touch
-
-- name: Write Mashine inventory parameters
-  ansible.builtin.shell: uname -a >> '{{wwwdir}}/inventory.txt'
+- name: Chek of create directorys
+  tags: check-vhdirs
+  ansible.builtin.stat:
+    path: '{{ wwwdir }}/vhost-03'
+  register: zeroone
+- name: Print check result
+  tags: check-vhdirs
+  ansible.builtin.debug:
+    msg: "Directory were been created"
+  when: zeroone.stat.isdir is defined and zeroone.stat.isdir

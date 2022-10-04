@@ -1,4 +1,5 @@
 ---
+#this is the role for leson-4
 - hosts: servers
   vars_files:
   - /home/rayne/ansible/roles/wordpress/vars/wordpress.yml
