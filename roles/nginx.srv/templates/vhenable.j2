@@ -1,0 +1,13 @@
+## Defult server configuration
+server {
+  listen 80;
+  root {{ document_root }}/{{ vi_host }};
+  index index.html index.htm;
+  server_name {{ vi_host }} www.{{ vi_host }};
+  access_log /var/log/nginx/{{ vi_host }}_access_log;
+  error_log /var/log/nginx/{{ vi_host }}_error_log;
+  location / {
+    default_type "text/html";
+    try_files $uri.html $uri $uri/ =404;
+    }
+}

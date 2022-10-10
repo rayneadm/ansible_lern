@@ -1,0 +1,9 @@
+---
+vserver:
+  - onix.rayne.ru
+  - fenix.rayne.ru
+document_root: "/var/www"
+
+nginx:
+  port: 8080
+  upstreamHostName: up.rayne.ru

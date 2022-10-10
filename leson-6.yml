@@ -1,0 +1,7 @@
+---
+#this is the role for leson-6
+- hosts: webservers
+  vars_files:
+  - roles/nginx.srv/vars/vhost.yml
+  roles:
+  - { role: nginx.srv, tags: [nginx]}

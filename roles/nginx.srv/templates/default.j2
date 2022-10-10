@@ -1,0 +1,7 @@
+server {
+       listen 8080;
+       server_name up.rayne.ru www.up.rayne.ru;
+       location / {
+         proxy_pass http://backend;
+          }
+        }

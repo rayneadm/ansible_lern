@@ -1,2 +1,6 @@
 [servers]
 fenix.rayne.ru
+
+[webservers]
+onix.rayne.ru   vi_host=onix.rayne.ru
+fenix.rayne.ru  vi_host=fenix.rayne.ru
