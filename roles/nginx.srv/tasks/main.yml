@@ -33,6 +33,16 @@
     src: roles/nginx.srv/templates/index.html.j2
     dest: '/var/www/{{ vi_host }}/index.html'
 
+- name: Remove managed idefault config files.
+  file:
+    path: '/etc/nginx/sites-enabled/default'
+    state: absent
+
+- name: Remove managed idefault config files.
+  file:
+    path: '/etc/nginx/sites-available/default'
+    state: absent
+
 - name: Create Vhosts config
   tags: def.conf
   template:
@@ -56,6 +66,7 @@
   template:
     src: roles/nginx.srv/templates/default.j2
     dest: /etc/nginx/sites-available/upstream.conf
+  notify: restart nginx
 
 - name: Enable Upstream
   ansible.builtin.file:

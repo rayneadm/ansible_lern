@@ -4,4 +4,6 @@
   vars_files:
   - roles/nginx.srv/vars/vhost.yml
   roles:
+  - { role: setting, tags: [timezone, locale]}
+  - { role: common, tags: [tools]}
   - { role: nginx.srv, tags: [nginx]}
