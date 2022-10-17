@@ -1,0 +1,45 @@
+---
+- name: Test Mysql port LISTEN
+  tags: mysql-up
+  shell: ss -tuln | grep  '0.0.0.0:3306' | awk '{print $5 }'
+  register: tulpan
+
+- name: Mysql debug msg
+  tags: mysql-up
+  ansible.builtin.debug:
+    msg: "{{ tulpan.stdout }}"
+
+- name: Include task check MySql if not "{{ tulpan.stdout }}"
+  tags: mysql-up
+  ansible.builtin.include_tasks: mysql_debug.yml
+  when:
+    - tulpan.stdout == ""
+
+- name: Test Nginx connection
+  tags: nginx-up
+  shell: ss -tlp | grep nginx | grep -v "\[::]"
+  register: nginxstat
+
+- name: Print result of Nginx connection
+  tags: nginx-up
+  ansible.builtin.debug:
+    msg: "Nginx is working {{ nginxstat.stdout }}"
+
+- name: Include task check Nginx if has problem
+  tags: nginx-up
+  ansible.builtin.include_tasks: nginx_debug.yml
+  when:
+    - nginxstat.stdout == ""
+
+- name: Compare checksumm
+  tags: crc
+  ansible.builtin.get_url:
+    url: "https://{{ server_name }}/license.txt"
+    dest: /tmp/license.txt
+    checksum: "{{ crc }}"
+    mode: 0777
+
+- name: Print result of Nginx connection
+  tags: crc
+  ansible.builtin.debug:
+    msg: "Checsumm is correct: {{ crc }}"

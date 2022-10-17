@@ -1,0 +1,13 @@
+---
+- name: Nginx health
+  tags: nginx-up
+  ansible.builtin.uri:
+    url: "http://{{ server_name }}:{{ nginx.port | default(80) }}/"
+    return_content: true
+    status_code: 200
+  register: health_out
+
+- name: Print nginx
+  tags: nginx-up
+  ansible.builtin.debug:
+    var: health_out.server

@@ -1,0 +1,10 @@
+- name: Check Mysql DB exists on "{{ server_name }}"
+  tags: mysql-up 
+  shell: mysql --host={{ server_name }} --user={{ mysql_user }} --password={{ mysql_password }} -e 'SHOW DATABASES;'
+  register: dbstatus
+  failed_when: dbstatus.rc == 2
+
+- name: Print Mysql DB exists
+  tags: mysql-up
+  ansible.builtin.debug:
+    msg: "Existen databases :{{ dbstatus.stdout }}"
